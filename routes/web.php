@@ -14,7 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin', function () {
+    return view('admin.admin_home');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::resource('image', 'ImageController');
+Route::resource('category', 'CategoryGalleryController');
+Route::resource('post', 'PostController');
+Route::resource('user', 'UserController');
