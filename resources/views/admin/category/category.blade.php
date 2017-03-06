@@ -32,7 +32,7 @@
       @foreach ($categories as $category)
       <tr>
         <td>{{$category->title}}</td>
-        <td>{{str_limit($category->description,15)}}</td>
+        <td>{{ str_limit($category->description,15) }}</td>
         <td>{{$category->active}}</td>
         <td><a href="{{url('category/'.$category->id.'/edit')}}" class="btn btn-info btn-sm">Edit</a></td>
         <td><form class="" action="{{url('category/'.$category->id)}}" method="post">

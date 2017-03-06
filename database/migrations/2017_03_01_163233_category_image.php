@@ -16,7 +16,9 @@ class CategoryImage extends Migration
         Schema::create('category_image', function(Blueprint $table){
           $table->increments('id');
           $table->integer('category_id')->unsigned();
+          $table->foreign('category_id')->references('id')->on('category_galleries')->onDelete('cascade');
           $table->integer('image_id')->unsigned();
+          $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
           $table->timestamps();
 
         });

@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <input type="text" class="form-control" id="description" name="description" value="{{$category->description}}">
+      <textarea class="form-control" id="description" name="description">{{$category->description}}</textarea>
     </div>
 
     <div class="checkbox">

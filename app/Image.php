@@ -11,6 +11,15 @@ class Image extends Model
   ];
   public function category()
   {
-    return $this->belongsToMany(CategoryGallery::class);
+    return $this->belongsToMany(CategoryGallery::class, 'category_image','category_id','image_id');
+  }
+  public function hasCategory($category)
+  {
+      foreach ($this->category as $category_t){
+          if ($category_t->id == $category){
+              return true;
+          }
+      }
+      return false;
   }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Image;
+use App\CategoryGallery as Category;
 use Illuminate\Http\Request;
-
+use ImageResize;
+use Illuminate\Support\Facades\Route;
 class ImageController extends Controller
 {
     /**
@@ -15,7 +17,11 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::paginate(10);
-        return view('admin.image.image', compact('images'));
+        $route = new Route;
+
+      $r = $route::getRoutes();
+        return view('admin.image.image', compact('images', 'r'));
+
     }
 
     /**
@@ -25,7 +31,9 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return view('admin.image.create_image');
+
+      $categories = Category::all();
+        return view('admin.image.create_image', compact('categories'));
     }
 
     /**
@@ -36,7 +44,30 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'title' => 'required',
+          'description' => 'required',
+          'image' => 'image',
+        ]);
+
+        $image = new Image;
+        $image->title = $request->get('title');
+        $image->description = $request->get('description');
+        $image->big = $request->file('image')->store('images');
+
+        ImageResize::configure(array('driver' => 'gd'));
+
+        $temp = ImageResize::make($request->file('image')->getRealPath());
+        $temp->resize(480, 270)->save('thumb/'.$image->big);
+        $image->thumb = 'thumb/'.$image->big;
+
+
+
+
+
+        $image->save();
+        $image->category()->sync($request->get('category'), false);
+        return back();
     }
 
     /**
@@ -58,7 +89,8 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        return view('admin.image.edit_image', compact('image'));
+      $category = Category::all();
+        return view('admin.image.edit_image', compact('image','category'));
     }
 
     /**
@@ -70,7 +102,28 @@ class ImageController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+      $this->validate($request, [
+        'title' => 'required',
+        'description' => 'required',
+        'image' => 'image',
+      ]);
+
+
+      $image->title = $request->get('title');
+      $image->description = $request->get('description');
+      $image->big = $request->file('image')->store('images');
+
+      ImageResize::configure(array('driver' => 'gd'));
+
+      $temp = ImageResize::make($request->file('image')->getRealPath());
+      $temp->resize(480, 270)->save('thumb/'.$image->big);
+      $image->thumb = 'thumb/'.$image->big;
+
+
+
+      $image->update();
+      $image->category()->sync($request->get('category'));
+      return redirect('image');
     }
 
     /**
@@ -81,6 +134,8 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        Image::destroy($image->id);
+        session()->flash('destroy', 'Image deleted successfully');
+        return redirect('image');
     }
 }

@@ -10,10 +10,10 @@ class CategoryGallery extends Model
       'title', 'description', 'active',
   ];
   protected $hidden = [
-       
+
   ];
   public function images()
   {
-    return $this->belongsToMany(Image::class, 'category_image', 'category_gallery_id', 'image_id');
+    return $this->belongsToMany(Image::class);
   }
 }

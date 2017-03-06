@@ -92,6 +92,19 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    {{-- TinyMCE  --}}
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    tinymce.init({
+          selector: 'textarea',
+          height: 500,
+          extended_valid_elements: 'img[class=myclass|!src|border:0|alt|title|width|height|style]',
+          invalid_elements: 'strong,b,em,i',
+          content_css: [
+            '//www.tinymce.com/css/codepen.min.css'
+          ]
+        });
+    </script>
 </html>
