@@ -21,10 +21,7 @@
   {{Session::get('deactivation')}}
   </div>
     @endif
-
-    @foreach ($r as $t)
-      {{$t->getName()}}
-    @endforeach
+    
     <table class="table table-striped">
       <tr>
         <th>Title</th>

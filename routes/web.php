@@ -25,3 +25,5 @@ Route::resource('image', 'ImageController');
 Route::resource('category', 'CategoryGalleryController');
 Route::resource('post', 'PostController');
 Route::resource('user', 'UserController');
+Route::resource('role', 'RoleController');
+Route::patch('routerefresh', 'RouteRefreshControll@index');

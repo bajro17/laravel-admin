@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{url('admin')}}">Project name</a>
+          <a class="navbar-brand" href="{{url('admin')}}">Admin Panel</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -61,6 +61,11 @@
                 </ul>
             </li>
             @endif
+            <form  action="routerefresh" method="post">
+              {{ csrf_field() }}
+              {{ method_field('PATCH')}}
+              <button type="submit" name="button">Refresh links</button>
+            </form>
           </ul>
 
         </div>
@@ -77,6 +82,7 @@
             <li><a href="{{url('post')}}">Posts</a></li>
             <li><a href="{{url('category')}}">Categories</a></li>
             <li><a href="{{url('image')}}">Images</a></li>
+            <li><a href="{{url('role')}}">Roles</a></li>
 
           </ul>
         </div>
