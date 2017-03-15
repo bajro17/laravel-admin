@@ -22,6 +22,7 @@ class Permission
           {
            return $next($request);
           }
+
           }
           return redirect('admin/admin');
         }

@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index');
 Route::group(['prefix' => 'admin', 'middleware' => 'permission'], function () {
 Route::get('/admin', function () {
     return view('admin.admin_home');
-});
+})->name('admin.admin');
 Route::resource('image', 'ImageController');
 Route::resource('category', 'CategoryGalleryController');
 Route::resource('post', 'PostController');
