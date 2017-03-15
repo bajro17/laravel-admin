@@ -31,9 +31,24 @@
 
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="active[]" @if ($user->active == 1) value="1" checked @endif>
+        <input type="checkbox" name="active" @if ($user->active == 1) value="1" checked @endif>Active
       </label>
     </div>
-    <button type="submit" class="btn btn-default">Save</button>
+    <div class="form-group">
+      <label for="role">Roles</label>
+
+    </div>
+    @foreach ($roles as $role)
+      <div class="checkbox col-md-3">
+    <label>
+      <input class="pro" type="checkbox"  name="roles[]" value="{{$role->id}}" @if ($user->hasRole($role->id)) checked
+
+      @endif> {{$role->name}}
+    </label>
+  </div>
+    @endforeach
+    <div class="form-group">
+<button type="submit" class="btn btn-default">Save</button>
+    </div>
   </form>
 @endsection

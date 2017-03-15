@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use Validator;
 
 class UserController extends Controller
@@ -60,7 +61,8 @@ class UserController extends Controller
     public function edit($id)
     {
       $user = User::find($id);
-        return view('admin.user.edit_user', compact('user'));
+      $roles = Role::all();
+        return view('admin.user.edit_user', compact('user','roles'));
     }
 
     /**
@@ -92,7 +94,8 @@ class UserController extends Controller
         else $user->active = 1;
         session()->flash('message', 'You update user successfully');
         $user->update();
-        return redirect('user');
+        $user->roles()->sync((array)$request->get('roles'));
+        return redirect('admin/user');
     }
 
     /**
