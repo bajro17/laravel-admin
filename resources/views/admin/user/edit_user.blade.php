@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 
-  <form action="{{url('user/'.$user->id)}}" method="post">
+  <form action="{{url('admin/user/'.$user->id)}}" method="post">
     {{csrf_field()}}
     {{method_field('PATCH')}}
     {{-- Validation errors list --}}
@@ -11,7 +11,7 @@
       </div><br>
     @endforeach
     {{-- Deactivation info --}}
-  
+
     <div class="form-group">
       <label for="first_name">First Name</label>
       <input type="text" class="form-control" id="first_name" name="first_name" value="{{$user->first_name}}">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Role;
+use App\Link;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -14,7 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return view('admin.role.role', compact('roles'));
     }
 
     /**
@@ -24,7 +26,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+      $links = Link::all();
+        return view('admin.role.create_role',compact('links'));
     }
 
     /**
@@ -35,7 +38,18 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'name' => 'required',
+          'description' => 'required'
+        ]);
+        $role = new Role;
+
+          $role->name = $request->get('name');
+        $role->description = $request->get('description');
+        $role->save();
+        $role->links()->sync($request->get('link'), false);
+        session()->flash('message', 'Role created successfully');
+        return redirect('admin/role');
     }
 
     /**
@@ -57,7 +71,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+      $links = Link::all();
+        return view('admin.role.edit_role', compact('role', 'links'));
     }
 
     /**
@@ -69,7 +84,18 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+      $this->validate($request, [
+        'name' => 'required',
+        'description' => 'required'
+      ]);
+
+
+        $role->name = $request->get('name');
+      $role->description = $request->get('description');
+      $role->update();
+      $role->links()->sync($request->get('link'));
+      session()->flash('message', 'Role edited successfully');
+      return redirect('admin/role');
     }
 
     /**

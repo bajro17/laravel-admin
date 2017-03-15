@@ -17,10 +17,7 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::paginate(10);
-        $route = new Route;
-
-      $r = $route::getRoutes();
-        return view('admin.image.image', compact('images', 'r'));
+        return view('admin.image.image', compact('images'));
 
     }
 
@@ -111,6 +108,9 @@ class ImageController extends Controller
 
       $image->title = $request->get('title');
       $image->description = $request->get('description');
+      if ($request->has('image')) {
+
+
       $image->big = $request->file('image')->store('images');
 
       ImageResize::configure(array('driver' => 'gd'));
@@ -118,9 +118,7 @@ class ImageController extends Controller
       $temp = ImageResize::make($request->file('image')->getRealPath());
       $temp->resize(480, 270)->save('thumb/'.$image->big);
       $image->thumb = 'thumb/'.$image->big;
-
-
-
+    }
       $image->update();
       $image->category()->sync($request->get('category'));
       return redirect('image');

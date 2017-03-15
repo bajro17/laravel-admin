@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-  <form action="{{url('post')}}" method="post">
+  <form action="{{url('admin/post')}}" method="post">
     {{csrf_field()}}
 
     {{-- Validation errors list --}}

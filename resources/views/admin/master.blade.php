@@ -60,9 +60,12 @@
                     </li>
                 </ul>
             </li>
-            @endif
+          @endif
           </ul>
-
+          <form class="" action="{{url('admin/link')}}" method="post">
+            {{csrf_field()}}
+            <button type="submit" name="button">Refresh routes</button>
+          </form>
         </div>
       </div>
     </nav>
@@ -72,11 +75,12 @@
         <div class="col-sm-3 col-md-2 sidebar">
 
           <ul class="nav nav-sidebar">
-            <li><a href="{{url('admin')}}">Informations</a></li>
-            <li><a href="{{url('user')}}">Users</a></li>
-            <li><a href="{{url('post')}}">Posts</a></li>
-            <li><a href="{{url('category')}}">Categories</a></li>
-            <li><a href="{{url('image')}}">Images</a></li>
+            <li><a href="{{url('admin/admin')}}">Informations</a></li>
+            <li><a href="{{url('admin/user')}}">Users</a></li>
+            <li><a href="{{url('admin/post')}}">Posts</a></li>
+            <li><a href="{{url('admin/category')}}">Categories</a></li>
+            <li><a href="{{url('admin/image')}}">Images</a></li>
+            <li><a href="{{url('admin/role')}}">Roles</a></li>
 
           </ul>
         </div>
@@ -91,7 +95,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     {{-- TinyMCE  --}}
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -106,5 +110,11 @@
             '//www.tinymce.com/css/codepen.min.css'
           ]
         });
+        jQuery(document).ready(function($){
+$('#toggle-button').click(function(event) {
+$( ' input[type="checkbox"]' ).prop('checked', this.checked)
+});
+
+ });
     </script>
 </html>

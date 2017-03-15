@@ -31,8 +31,8 @@
       <td>{{$user->username}}</td>
       <td>{{$user->email}}</td>
       <td>{{$user->active}}</td>
-      <td><a href="{{url('user/'.$user->id.'/edit')}}" class="btn btn-info btn-sm">Edit</a></td>
-      <td><form class="" action="{{url('user/'.$user->id)}}" method="post">
+      <td><a href="{{url('admin/user/'.$user->id.'/edit')}}" class="btn btn-info btn-sm">Edit</a></td>
+      <td><form class="" action="{{url('admin/user/'.$user->id)}}" method="post">
         {{csrf_field()}}
         {{ method_field('DELETE') }}
         <button type="submit" name="button" class="btn btn-danger btn-sm">Delete</button>

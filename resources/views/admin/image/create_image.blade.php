@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-  <form action="{{url('image')}}" method="post" enctype="multipart/form-data">
+  <form action="{{url('admin/image')}}" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
 
     {{-- Validation errors list --}}

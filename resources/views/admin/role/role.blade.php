@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-  <a href="{{url('admin/post/create')}}" class="btn btn-success">Create New</a>
+  <a href="{{url('admin/role/create')}}" class="btn btn-success">Create New</a>
   @if (Session::has('delete'))
     <div class="alert alert-danger alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -15,29 +15,21 @@
 </div>
   @endif
   {{-- Deactivation info --}}
-  @if (Session::has('deactivation'))
-    <div class="alert alert-danger alert-dismissible" role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-{{Session::get('deactivation')}}
-</div>
-  @endif
+
   <table class="table table-striped">
     <tr>
-      <th>Author</th>
-      <th>Title</th>
-      <th>Story</th>
-      <th>Active</th>
+      <th>Name</th>
+      <th>Description</th>
+
       <th>Edit</th>
       <th>Delete</th>
     </tr>
-    @foreach ($posts as $post)
+    @foreach ($roles as $role)
     <tr>
-      <td>{{$post->user->first_name}}</td>
-      <td>{{$post->title}}</td>
-      <td>{{str_limit($post->story,15)}}</td>
-      <td>{{$post->active}}</td>
-      <td><a href="{{url('admin/post/'.$post->id.'/edit')}}" class="btn btn-info btn-sm">Edit</a></td>
-      <td><form class="" action="{{url('admin/post/'.$post->id)}}" method="post">
+      <td>{{$role->name}}</td>
+      <td>{{str_limit($role->description,15)}}</td>
+      <td><a href="{{url('admin/role/'.$role->id.'/edit')}}" class="btn btn-info btn-sm">Edit</a></td>
+      <td><form class="" action="{{url('admin/role/'.$role->id)}}" method="post">
         {{csrf_field()}}
         {{ method_field('DELETE') }}
         <button type="submit" name="button" class="btn btn-danger btn-sm">Delete</button>
