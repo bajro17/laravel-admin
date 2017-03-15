@@ -6,7 +6,8 @@ use App\Image;
 use App\CategoryGallery as Category;
 use Illuminate\Http\Request;
 use ImageResize;
-use Illuminate\Support\Facades\Route;
+use Route;
+
 class ImageController extends Controller
 {
     /**
@@ -17,6 +18,10 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::paginate(10);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707
         return view('admin.image.image', compact('images'));
 
     }
@@ -59,12 +64,10 @@ class ImageController extends Controller
         $image->thumb = 'thumb/'.$image->big;
 
 
-
-
-
         $image->save();
         $image->category()->sync($request->get('category'), false);
-        return back();
+        session()->flash('message', 'Image created successfully');
+        return redirect('image');
     }
 
     /**
@@ -121,6 +124,7 @@ class ImageController extends Controller
     }
       $image->update();
       $image->category()->sync($request->get('category'));
+      session()->flash('message', 'You update image successfully');
       return redirect('image');
     }
 

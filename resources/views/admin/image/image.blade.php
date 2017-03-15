@@ -21,6 +21,10 @@
   {{Session::get('deactivation')}}
   </div>
     @endif
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707
     <table class="table table-striped">
       <tr>
         <th>Title</th>
