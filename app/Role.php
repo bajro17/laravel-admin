@@ -13,7 +13,7 @@ class Role extends Model
   {
       return $this->belongsToMany('App\User');
   }
-<<<<<<< HEAD
+
   public function links()
   {
     return $this->belongsToMany('App\Link', 'link_role', 'role_id', 'link_id');
@@ -26,10 +26,5 @@ class Role extends Model
           }
       }
       return false;
-=======
-  public function routes()
-  {
-    return $this->belongsToMany(RouteRefresh::class);
->>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707
-  }
+}
 }

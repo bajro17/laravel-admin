@@ -60,16 +60,8 @@
                     </li>
                 </ul>
             </li>
-<<<<<<< HEAD
+
           @endif
-=======
-            @endif
-            <form  action="routerefresh" method="post">
-              {{ csrf_field() }}
-              {{ method_field('PATCH')}}
-              <button type="submit" name="button">Refresh links</button>
-            </form>
->>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707
           </ul>
           <form class="" action="{{url('admin/link')}}" method="post">
             {{csrf_field()}}
@@ -84,21 +76,14 @@
         <div class="col-sm-3 col-md-2 sidebar">
 
           <ul class="nav nav-sidebar">
-<<<<<<< HEAD
+
             <li><a href="{{url('admin/admin')}}">Informations</a></li>
             <li><a href="{{url('admin/user')}}">Users</a></li>
             <li><a href="{{url('admin/post')}}">Posts</a></li>
             <li><a href="{{url('admin/category')}}">Categories</a></li>
             <li><a href="{{url('admin/image')}}">Images</a></li>
             <li><a href="{{url('admin/role')}}">Roles</a></li>
-=======
-            <li><a href="{{url('admin')}}">Informations</a></li>
-            <li><a href="{{url('user')}}">Users</a></li>
-            <li><a href="{{url('post')}}">Posts</a></li>
-            <li><a href="{{url('category')}}">Categories</a></li>
-            <li><a href="{{url('image')}}">Images</a></li>
-            <li><a href="{{url('role')}}">Roles</a></li>
->>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707
+
 
           </ul>
         </div>

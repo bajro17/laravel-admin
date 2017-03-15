@@ -29,9 +29,5 @@ Route::resource('category', 'CategoryGalleryController');
 Route::resource('post', 'PostController');
 Route::resource('user', 'UserController');
 Route::resource('role', 'RoleController');
-<<<<<<< HEAD
 Route::post('link', 'LinkController@store');
 });
-=======
-Route::patch('routerefresh', 'RouteRefreshControll@index');
->>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707

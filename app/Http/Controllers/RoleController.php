@@ -26,12 +26,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
+
       $links = Link::all();
         return view('admin.role.create_role',compact('links'));
-=======
-        return view('admin.role.create_role');
->>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707
+
     }
 
     /**
@@ -44,7 +42,6 @@ class RoleController extends Controller
     {
         $this->validate($request, [
           'name' => 'required',
-<<<<<<< HEAD
           'description' => 'required'
         ]);
         $role = new Role;
@@ -55,13 +52,6 @@ class RoleController extends Controller
         $role->links()->sync($request->get('link'), false);
         session()->flash('message', 'Role created successfully');
         return redirect('admin/role');
-=======
-          'description' => 'required',
-        ]);
-        Role::create($request->all());
-        return redirect('role');
-
->>>>>>> 9a8e0e200c383d164397de7277bc19bba21d0707
     }
 
     /**
