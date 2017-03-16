@@ -23,7 +23,11 @@
       <input class="form-control" id="description" name="description" value="{{$role->description}}"/>
     </div>
     <div class="form-group">
-    <input type="checkbox" name="" value="" id="toggle-button">Select all
+    <input type="checkbox" name="" value="" id="selectall">Select all
+    <input type="checkbox" name="" value="" id="show">Just show
+    <input type="checkbox" name="" value="" id="create">Allow create new 
+    <input type="checkbox" name="" value="" id="update">Allow update
+    <input type="checkbox" name="" value="" id="delete">Allow delete
   </div>
     @foreach ($links as $link)
       <div class="checkbox col-md-3">

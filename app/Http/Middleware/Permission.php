@@ -15,16 +15,18 @@ class Permission
      */
     public function handle($request, Closure $next)
     {
-
-      foreach (auth()->user()->roles as $role) {
-        foreach ($role->links as $link) {
-          if($link->name == $request->route()->getName())
-          {
+      // if(!auth()->guest()) {
+      // foreach (auth()->user()->roles as $role) {
+      //   foreach ($role->links as $link) {
+      //     if($link->name == $request->route()->getName())
+      //     {
            return $next($request);
-          }
-
-          }
-          return redirect('admin/admin');
-        }
+      //     }
+      //
+      //     }
+      //     return redirect('admin/admin');
+      //   }
+      // }
+      // else return redirect('login');
       }
 }

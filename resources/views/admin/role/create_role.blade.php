@@ -34,7 +34,7 @@
       <input class="form-control" id="description" name="description"/>
     </div>
     <div class="form-group">
-    <input type="checkbox" name="" value="" id="toggle-button">Select all
+    <input type="checkbox" name="" value="" id="selectall">Select all
   </div>
     @foreach ($links as $link)
       <div class="checkbox col-md-3">

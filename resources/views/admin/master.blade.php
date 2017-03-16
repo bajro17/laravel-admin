@@ -114,9 +114,22 @@
           ]
         });
         jQuery(document).ready(function($){
-$('#toggle-button').click(function(event) {
+$('#selectall').click(function(event) {
 $( ' input[type="checkbox"]' ).prop('checked', this.checked)
-});
+}),
+$('#show').click(function(event) {
+$("label:contains('index') input[type='checkbox']" ).prop('checked', this.checked)
+}),
+$('#create').click(function(event) {
+$("label:contains('index') input[type='checkbox'],  label:contains('create') input[type='checkbox'], label:contains('store') input[type='checkbox']" ).prop('checked', this.checked)
+}),
+$('#update').click(function(event) {
+$("label:contains('index') input[type='checkbox'],  label:contains('edit') input[type='checkbox'], label:contains('update') input[type='checkbox']" ).prop('checked', this.checked)
+}),
+$('#delete').click(function(event) {
+$("label:contains('index') input[type='checkbox'],  label:contains('destroy') input[type='checkbox']" ).prop('checked', this.checked)
+})
+
 
  });
     </script>

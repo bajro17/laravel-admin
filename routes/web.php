@@ -24,10 +24,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'permission'], function () {
 Route::get('/admin', function () {
     return view('admin.admin_home');
 })->name('admin.admin');
-Route::resource('image', 'ImageController');
-Route::resource('category', 'CategoryGalleryController');
-Route::resource('post', 'PostController');
-Route::resource('user', 'UserController');
-Route::resource('role', 'RoleController');
-Route::post('link', 'LinkController@store');
+Route::resource('image', 'ImageController', ['except' => ['show']]);
+Route::resource('category', 'CategoryGalleryController', ['except' => ['show']]);
+Route::resource('post', 'PostController', ['except' => ['show']]);
+Route::resource('user', 'UserController', ['except' => ['show']]);
+Route::resource('role', 'RoleController', ['except' => ['show']]);
+Route::post('link', 'LinkController@store')->name('refresh');
 });
